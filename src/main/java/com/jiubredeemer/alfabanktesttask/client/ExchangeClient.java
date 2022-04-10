@@ -2,16 +2,16 @@ package com.jiubredeemer.alfabanktesttask.client;
 
 import com.jiubredeemer.alfabanktesttask.domain.Exchange;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
-import java.net.URI;
 
-
-@FeignClient(name = "ExchangeClient", url = "https://openexchangerates.org/api/")
+@FeignClient(name = "ExchangeClient", url = "${exchange.service-url}")
 public interface ExchangeClient {
 
-    @GetMapping(consumes= MediaType.APPLICATION_JSON_VALUE)
-    Exchange getExchange(URI baseUrl);
+    @GetMapping("/historical/{date}.json?app_id={app_id}&base={base}")
+    Exchange getHistoricalExchange(@PathVariable("app_id") String app_id,
+                                   @PathVariable("date") String date,
+                                   @PathVariable("base") String base);
 
 }
