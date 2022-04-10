@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2022. Vladislav Golubev
+ */
+
 package com.jiubredeemer.alfabanktesttask.service.giphy;
 
 import com.jiubredeemer.alfabanktesttask.domain.Gif;

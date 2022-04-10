@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2022. Vladislav Golubev
+ */
+
 package com.jiubredeemer.alfabanktesttask.domain;
 
 import lombok.Getter;

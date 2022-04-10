@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2022. Vladislav Golubev
+ */
+
 package com.jiubredeemer.alfabanktesttask.controller;
 
 import com.jiubredeemer.alfabanktesttask.exceptions.InternalServiceException;

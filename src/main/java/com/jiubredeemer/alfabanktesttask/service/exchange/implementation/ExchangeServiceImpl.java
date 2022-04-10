@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2022. Vladislav Golubev
+ */
+
 package com.jiubredeemer.alfabanktesttask.service.exchange.implementation;
 
 import com.jiubredeemer.alfabanktesttask.client.ExchangeClient;
