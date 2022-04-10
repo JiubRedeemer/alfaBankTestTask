@@ -2,6 +2,8 @@ package com.jiubredeemer.alfabanktesttask.service.exchange.implementation;
 
 import com.jiubredeemer.alfabanktesttask.client.ExchangeClient;
 import com.jiubredeemer.alfabanktesttask.domain.Exchange;
+import com.jiubredeemer.alfabanktesttask.exceptions.InternalServiceException;
+import com.jiubredeemer.alfabanktesttask.exceptions.InvalidCurrencyException;
 import com.jiubredeemer.alfabanktesttask.service.exchange.ExchangeService;
 import com.jiubredeemer.alfabanktesttask.service.exchange.ExchangeStatus;
 import lombok.extern.slf4j.Slf4j;
@@ -25,20 +27,29 @@ public class ExchangeServiceImpl implements ExchangeService {
 
 
     @Override
-    public Exchange getExchangeByDate(LocalDate date) {
-        return exchangeClient.getHistoricalExchange(exchangeAppId, date.toString(), baseCurrency);
+    public Exchange getExchangeByDate(LocalDate date) throws InternalServiceException {
+        Exchange exchange = exchangeClient.getHistoricalExchange(exchangeAppId, date.toString(), baseCurrency);
+        if (exchange == null) {
+            log.error("Exchange service is down");
+            throw new InternalServiceException();
+        }
+        log.info("Get exchange: " + exchange.getBase() + " - " + date);
+        return exchange;
     }
 
     @Override
-    public ExchangeStatus getExchangeStatusByCurrency(String currency) {
+    public ExchangeStatus getExchangeStatusByCurrency(String currency) throws InvalidCurrencyException, InternalServiceException {
         Exchange currencyToday = getExchangeByDate(LocalDate.now());
         Exchange currencyYesterday = getExchangeByDate(LocalDate.now().minusDays(1));
-
+        if (currencyToday.getRates().get(currency) == null || currencyYesterday.getRates().get(currency) == null) {
+            log.error("Illegal currency");
+            throw new InvalidCurrencyException();
+        }
         if (currencyToday.getRates().get(currency) > currencyYesterday.getRates().get(currency)) {
-            return ExchangeStatus.RICH;
+            return ExchangeStatus.INCREASED;
         } else if (currencyToday.getRates().get(currency) < currencyYesterday.getRates().get(currency)) {
-            return ExchangeStatus.BROKE;
-        } else return ExchangeStatus.SAME;
+            return ExchangeStatus.DECREASED;
+        } else return ExchangeStatus.EQUALS;
     }
 
 

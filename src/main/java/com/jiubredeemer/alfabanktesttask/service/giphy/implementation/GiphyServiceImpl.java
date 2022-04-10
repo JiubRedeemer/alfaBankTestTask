@@ -3,6 +3,7 @@ package com.jiubredeemer.alfabanktesttask.service.giphy.implementation;
 import com.jiubredeemer.alfabanktesttask.client.GiphyClient;
 import com.jiubredeemer.alfabanktesttask.domain.Gif;
 import com.jiubredeemer.alfabanktesttask.domain.dto.GiphyDTO;
+import com.jiubredeemer.alfabanktesttask.exceptions.InternalServiceException;
 import com.jiubredeemer.alfabanktesttask.service.exchange.ExchangeStatus;
 import com.jiubredeemer.alfabanktesttask.service.giphy.GiphyService;
 import lombok.extern.slf4j.Slf4j;
@@ -27,16 +28,22 @@ public class GiphyServiceImpl implements GiphyService {
     private String rating;
 
     @Override
-    public GiphyDTO getRandomGifByTag(String tag) {
-        return giphyClient.getGif(apiKey, tag, rating);
+    public GiphyDTO getRandomGifByTag(String tag) throws InternalServiceException {
+        GiphyDTO gif = giphyClient.getGif(apiKey, tag, rating);
+        if(gif == null){
+            log.error("Gif not found!");
+            throw new InternalServiceException();
+        }
+        log.info("Load gif: " + gif.getData().getId());
+        return gif;
     }
 
     @Override
-    public Gif getGifByExchangeStatus(ExchangeStatus exchangeStatus) {
+    public Gif getGifByExchangeStatus(ExchangeStatus exchangeStatus) throws InternalServiceException {
         switch (exchangeStatus) {
-            case RICH:
+            case INCREASED:
                 return getRandomGifByTag(richTag).getData();
-            case BROKE:
+            case DECREASED:
                 return getRandomGifByTag(brokeTag).getData();
             default:
                 throw new IllegalStateException();
@@ -44,7 +51,7 @@ public class GiphyServiceImpl implements GiphyService {
     }
 
     @Override
-    public String getGifPageByExchangeStatus(ExchangeStatus exchangeStatus) {
+    public String getGifPageByExchangeStatus(ExchangeStatus exchangeStatus) throws InternalServiceException {
         return "<img src=\"https://media0.giphy.com/media/" + getGifByExchangeStatus(exchangeStatus).getId() + "/giphy.gif\">";
     }
 }
