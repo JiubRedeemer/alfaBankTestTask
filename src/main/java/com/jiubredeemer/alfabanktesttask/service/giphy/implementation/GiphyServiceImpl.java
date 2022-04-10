@@ -20,7 +20,7 @@ import org.springframework.stereotype.Service;
 public class GiphyServiceImpl implements GiphyService {
 
     @Autowired
-    GiphyClient giphyClient;
+    private GiphyClient giphyClient;
 
     @Value("${gif.api-key}")
     private String apiKey;

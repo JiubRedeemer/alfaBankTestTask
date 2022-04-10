@@ -5,13 +5,12 @@
 package com.jiubredeemer.alfabanktesttask.domain.dto;
 
 import com.jiubredeemer.alfabanktesttask.domain.Gif;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class GiphyDTO {
     Gif data;
 }
