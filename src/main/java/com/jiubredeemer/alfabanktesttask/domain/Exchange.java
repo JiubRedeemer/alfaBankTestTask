@@ -1,6 +1,5 @@
 package com.jiubredeemer.alfabanktesttask.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,14 +14,4 @@ public class Exchange {
     private String license;
     private String base;
     private Map<String, Double> rates;
-
-    @Override
-    public String toString() {
-        return "Exchange{" +
-                "disclaimer='" + disclaimer + '\'' +
-                ", license='" + license + '\'' +
-                ", base='" + base + '\'' +
-                ", rates=" + rates +
-                '}';
-    }
 }
