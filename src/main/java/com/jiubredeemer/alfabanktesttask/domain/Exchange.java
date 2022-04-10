@@ -10,10 +10,19 @@ import java.util.Map;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class Exchange {
     private String disclaimer;
     private String license;
     private String base;
     private Map<String, Double> rates;
+
+    @Override
+    public String toString() {
+        return "Exchange{" +
+                "disclaimer='" + disclaimer + '\'' +
+                ", license='" + license + '\'' +
+                ", base='" + base + '\'' +
+                ", rates=" + rates +
+                '}';
+    }
 }

@@ -20,12 +20,13 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
-    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework.boot:spring-boot-starter-web-services:2.6.5'
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign:3.1.1'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor:2.6.6'
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat:2.6.5'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.6.5'
 }
 
 tasks.named('test') {
