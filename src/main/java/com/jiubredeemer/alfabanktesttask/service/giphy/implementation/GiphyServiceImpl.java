@@ -47,6 +47,7 @@ public class GiphyServiceImpl implements GiphyService {
 
     @Override
     public Gif getGifByExchangeStatus(ExchangeStatus exchangeStatus) throws InternalServiceException {
+        log.info("Exchange status: " + exchangeStatus);
         switch (exchangeStatus) {
             case INCREASED:
                 return getRandomGifByTag(richTag).getData();
