@@ -25,8 +25,8 @@
 <h4>or</h4>
 
 <h3>Java</h3>
-cd ./build/libs/AlfaBankTestTask-0.0.1-SNAPSHOT.jar<br>
-java -jar AlfaBankTestTask-0.0.1-SNAPSHOT.jar
+<li>cd ./build/libs/AlfaBankTestTask-0.0.1-SNAPSHOT.jar<br>
+<li>java -jar AlfaBankTestTask-0.0.1-SNAPSHOT.jar
 
 <h3>Endpoints</h3>
 <li>Получить отображение гифки - GET http://localhost:8080/currencies/{currency}/get-gif
