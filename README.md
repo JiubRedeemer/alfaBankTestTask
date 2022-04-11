@@ -30,7 +30,7 @@
 
 <h3>Endpoints</h3>
 <li>Получить отображение гифки - GET http://localhost:8080/currencies/{currency}/get-gif
-<li>Реализация в виде API - http://localhost:8080/api/currencies/{currency}/get-gif
+<li>Реализация в виде API - GET http://localhost:8080/api/currencies/{currency}/get-gif
 <h2>Доступные валюты</h2>
 <li>"AED": "United Arab Emirates Dirham",
 <li> "AFN": "Afghan Afghani",
