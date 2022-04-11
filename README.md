@@ -25,6 +25,7 @@
 <h4>or</h4>
 
 <h3>Java</h3>
+<b>Java 11+ required<b>
 <li>gradle clean bootJar
 <li>cd ./build/libs/AlfaBankTestTask-0.0.1-SNAPSHOT.jar<br>
 <li>java -jar AlfaBankTestTask-0.0.1-SNAPSHOT.jar
