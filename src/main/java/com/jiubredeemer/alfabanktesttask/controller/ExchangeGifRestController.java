@@ -7,7 +7,7 @@ package com.jiubredeemer.alfabanktesttask.controller;
 import com.jiubredeemer.alfabanktesttask.domain.Gif;
 import com.jiubredeemer.alfabanktesttask.exceptions.InternalServiceException;
 import com.jiubredeemer.alfabanktesttask.exceptions.InvalidCurrencyException;
-import com.jiubredeemer.alfabanktesttask.service.exchange.implementation.ExchangeServiceImpl;
+import com.jiubredeemer.alfabanktesttask.service.exchange.ExchangeService;
 import com.jiubredeemer.alfabanktesttask.service.giphy.GiphyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,13 +19,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class ExchangeGifRestController {
 
     @Autowired
-    ExchangeServiceImpl exchangeService;
+    private ExchangeService exchangeService;
 
     @Autowired
-    GiphyService giphyService;
+    private GiphyService giphyService;
 
     @GetMapping("api/currencies/{currency}/get-gif")
-    ResponseEntity<Gif> getGif(@PathVariable String currency) throws InvalidCurrencyException, InternalServiceException {
+    public ResponseEntity<Gif> getGif(@PathVariable String currency) throws InvalidCurrencyException, InternalServiceException {
         Gif gif = giphyService.getGifByExchangeStatus(exchangeService.getExchangeStatusByCurrency(currency));
         return ResponseEntity.ok(gif);
     }

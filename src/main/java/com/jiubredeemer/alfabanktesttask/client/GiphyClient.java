@@ -13,6 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface GiphyClient {
     @GetMapping("/random?api_key={api_key}&tag={tag}&rating={rating}")
     GiphyDTO getGif(@PathVariable("api_key") String api_key,
-                           @PathVariable("tag") String tag,
-                           @PathVariable("rating") String rating);
+                    @PathVariable("tag") String tag,
+                    @PathVariable("rating") String rating);
 }

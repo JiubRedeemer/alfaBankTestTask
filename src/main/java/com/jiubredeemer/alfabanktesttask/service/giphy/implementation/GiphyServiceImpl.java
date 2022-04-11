@@ -24,17 +24,20 @@ public class GiphyServiceImpl implements GiphyService {
 
     @Value("${gif.api-key}")
     private String apiKey;
+
     @Value("${gif.rich-tag}")
     private String richTag;
+
     @Value("${gif.broke-tag}")
     private String brokeTag;
+
     @Value("${gif.rating}")
     private String rating;
 
     @Override
     public GiphyDTO getRandomGifByTag(String tag) throws InternalServiceException {
         GiphyDTO gif = giphyClient.getGif(apiKey, tag, rating);
-        if(gif == null){
+        if (gif == null) {
             log.error("Gif not found!");
             throw new InternalServiceException();
         }

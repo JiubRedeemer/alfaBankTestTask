@@ -12,7 +12,6 @@ import com.jiubredeemer.alfabanktesttask.service.exchange.ExchangeStatus;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.platform.commons.util.ReflectionUtils;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -26,11 +25,10 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 @SpringBootTest()
 @ExtendWith(SpringExtension.class)
 class GiphyServiceImplTest {
+
     private static final String TEST_RICH_TAG = "testRichTag";
     private static final String TEST_BROKE_TAG = "testBrokeTag";
     private static final String TEST_ERROR_TAG = "error";
-    private static final String TEST_RICH_GIF_ID = "11111";
-    private static final String TEST_BROKE_GIF_ID = "22222";
 
     private static final Gif TEST_RICH_GIF = new Gif();
     private static final Gif TEST_BROKE_GIF = new Gif();

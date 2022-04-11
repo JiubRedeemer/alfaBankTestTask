@@ -26,6 +26,7 @@ public class ExchangeServiceImpl implements ExchangeService {
 
     @Value("${exchange.app-id}")
     private String exchangeAppId;
+
     @Value("${exchange.base-currency}")
     private String baseCurrency;
 

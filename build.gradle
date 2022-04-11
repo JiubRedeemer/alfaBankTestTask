@@ -27,6 +27,8 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.22'
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat:2.6.5'
     testImplementation 'org.springframework.boot:spring-boot-starter-test:2.6.5'
+    testImplementation "com.github.tomakehurst:wiremock-jre8:2.33.1"
+
 }
 
 tasks.named('test') {
