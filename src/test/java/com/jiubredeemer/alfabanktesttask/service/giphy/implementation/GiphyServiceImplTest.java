@@ -42,10 +42,10 @@ class GiphyServiceImplTest {
     private static final String TEST_BROKE_PAGE = "<img src=\"https://media0.giphy.com/media/" + TEST_BROKE_GIF.getId() + "/giphy.gif\">";
 
     @Mock
-    GiphyClient giphyClient;
+    private GiphyClient giphyClient;
 
     @InjectMocks
-    GiphyServiceImpl giphyService;
+    private GiphyServiceImpl giphyService;
 
     @BeforeEach
     void init() {
