@@ -30,7 +30,6 @@ public class ExchangeServiceImpl implements ExchangeService {
     @Value("${exchange.base-currency}")
     private String baseCurrency;
 
-
     @Override
     public Exchange getExchangeByDate(LocalDate date) throws InternalServiceException {
         Exchange exchange = exchangeClient.getHistoricalExchange(exchangeAppId, date.toString(), baseCurrency);
@@ -58,6 +57,4 @@ public class ExchangeServiceImpl implements ExchangeService {
             return ExchangeStatus.DECREASED;
         } else return ExchangeStatus.EQUALS;
     }
-
-
 }

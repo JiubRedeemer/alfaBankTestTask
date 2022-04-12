@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @FeignClient(name = "GiphyClient", url = "${gif.service-url}")
 public interface GiphyClient {
+
     @GetMapping("/random?api_key={api_key}&tag={tag}&rating={rating}")
     GiphyDTO getGif(@PathVariable("api_key") String api_key,
                     @PathVariable("tag") String tag,

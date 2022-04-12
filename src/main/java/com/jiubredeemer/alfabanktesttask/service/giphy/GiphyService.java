@@ -10,6 +10,7 @@ import com.jiubredeemer.alfabanktesttask.exceptions.InternalServiceException;
 import com.jiubredeemer.alfabanktesttask.service.exchange.ExchangeStatus;
 
 public interface GiphyService {
+
     GiphyDTO getRandomGifByTag(String tag) throws InternalServiceException;
 
     Gif getGifByExchangeStatus(ExchangeStatus exchangeStatus) throws InternalServiceException;
